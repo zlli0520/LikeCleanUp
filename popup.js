@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   const actionButton = document.getElementById('actionButton');
   const resultDiv = document.getElementById('result');
+  const counterDiv = document.getElementById('counter');
 
-  // Example of using Chrome storage API
-  chrome.storage.local.get(['lastAction'], function(result) {
+  // Load the counter from storage
+  chrome.storage.local.get(['lastAction', 'likeCount'], function(result) {
     if (result.lastAction) {
-      resultDiv.textContent = `Last action: ${result.lastAction}`;
+      resultDiv.textContent = `上次操作时间: ${result.lastAction}`;
+    }
+    if (result.likeCount) {
+      counterDiv.textContent = `已清理点赞数: ${result.likeCount}`;
+    } else {
+      counterDiv.textContent = '已清理点赞数: 0';
     }
   });
 
@@ -14,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save the action to Chrome storage
     chrome.storage.local.set({ lastAction: timestamp }, function() {
-      resultDiv.textContent = `Action performed at: ${timestamp}`;
+      resultDiv.textContent = `操作执行时间: ${timestamp}`;
     });
 
     // Get the current active tab
@@ -55,25 +61,23 @@ function clickButtons() {
     
     // Increment index for next note
     idx += 1;
-    console.log(idx);
+    
+    // Update the counter in storage
+    chrome.storage.local.get(['likeCount'], function(result) {
+      const currentCount = (result.likeCount || 0) + 1;
+      chrome.storage.local.set({ likeCount: currentCount }, function() {
+        // Update the counter display
+        const counterDiv = document.getElementById('counter');
+        if (counterDiv) {
+          counterDiv.textContent = `已清理点赞数: ${currentCount}`;
+        }
+      });
+    });
+    
     // Schedule next click with random delay between 1-2 seconds
     setTimeout(run, 1000 + parseInt(Math.random() * 1000));
   }
   
   // Start the clicking process
   run();
-
-  // // Example: Click buttons by text content
-  // const buttonsByText = Array.from(document.querySelectorAll('button')).filter(
-  //   button => button.textContent.includes('Your Button Text')
-  // );
-  // buttonsByText.forEach(button => {
-  //   button.click();
-  // });
-
-  // // Example: Click buttons by ID
-  // const specificButton = document.getElementById('your-button-id');
-  // if (specificButton) {
-  //   specificButton.click();
-  // }
 } 
