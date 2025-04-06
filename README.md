@@ -1,50 +1,50 @@
-# LikeCleanUp Chrome Extension
+# LikeCleanUp Chrome 扩展
 
-This is a Chrome extension for automating the cleanup of likes on Xiaohongshu using Manifest V3.
+这是一个用于自动化清理小红书点赞的 Chrome 扩展，使用 Manifest V3 开发。
 
-## Features
+## 功能特点
 
-- Automated like button clicking
-- Random delay between actions to simulate human behavior
-- Chrome Storage API integration
-- Active Tab API usage
-- Modern styling
+- 自动点击点赞按钮
+- 随机延迟操作以模拟人工行为
+- Chrome 存储 API 集成
+- 活动标签页 API 使用
+- 现代化界面设计
 
-## Installation
+## 安装步骤
 
-1. Clone or download this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked" and select the extension directory
+1. 克隆或下载此仓库
+2. 打开 Chrome 浏览器，访问 `chrome://extensions/`
+3. 在右上角启用"开发者模式"
+4. 点击"加载已解压的扩展程序"并选择扩展目录
 
-## Development
+## 开发文件
 
-The extension consists of the following files:
-- `manifest.json`: Extension configuration
-- `popup.html`: Popup interface
-- `popup.js`: Popup functionality with jQuery integration
-- `jquery-3.7.1.min.js`: jQuery library for DOM manipulation
-- `icons/`: Extension icons
+扩展包含以下文件：
+- `manifest.json`: 扩展配置文件
+- `popup.html`: 弹出窗口界面
+- `popup.js`: 包含 jQuery 集成的功能代码
+- `jquery-3.7.1.min.js`: jQuery 库用于 DOM 操作
+- `icons/`: 扩展图标文件夹
 
-## How It Works
+## 工作原理
 
-The extension:
-1. Injects jQuery into the target webpage
-2. Automatically clicks like buttons in the third tab content
-3. Adds random delays between clicks to avoid detection
-4. Progresses through all note items sequentially
+扩展程序会：
+1. 将 jQuery 注入目标网页
+2. 自动点击第三个标签页内容中的点赞按钮
+3. 添加随机延迟以避免被检测
+4. 按顺序处理所有笔记项目
 
-## Permissions
+## 所需权限
 
-The extension requires the following permissions:
-- `storage`: For using Chrome's storage API
-- `activeTab`: For accessing the current tab
-- `scripting`: For injecting and executing scripts in web pages
-- `host_permissions`: For accessing the target website
+扩展需要以下权限：
+- `storage`: 用于使用 Chrome 存储 API
+- `activeTab`: 用于访问当前标签页
+- `scripting`: 用于在网页中注入和执行脚本
+- `host_permissions`: 用于访问目标网站
 
-## Testing
+## 测试方法
 
-1. Make changes to the code
-2. Go to `chrome://extensions/`
-3. Click the refresh icon on your extension's card
-4. Test the changes by clicking the extension icon in your browser toolbar 
+1. 修改代码
+2. 访问 `chrome://extensions/`
+3. 点击扩展卡片上的刷新图标
+4. 点击浏览器工具栏中的扩展图标测试更改 
