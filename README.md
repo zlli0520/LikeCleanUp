@@ -47,4 +47,10 @@
 1. 修改代码
 2. 访问 `chrome://extensions/`
 3. 点击扩展卡片上的刷新图标
-4. 点击浏览器工具栏中的扩展图标测试更改 
+4. 点击浏览器工具栏中的扩展图标测试更改
+
+## 支持开发者
+
+如果这个扩展对你有帮助，请考虑支持开发者：
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/zlli0520) 
