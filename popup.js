@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load the counter from storage
   chrome.storage.local.get(['lastAction', 'likeCount'], function(result) {
     if (result.lastAction) {
-      resultDiv.textContent = `上次操作时间: ${result.lastAction}`;
+      resultDiv.textContent = `Last operation time: ${result.lastAction}`;
     }
     if (result.likeCount) {
-      counterDiv.textContent = `已清理点赞数: ${result.likeCount}`;
+      counterDiv.textContent = `Likes cleaned up: ${result.likeCount}`;
     } else {
-      counterDiv.textContent = '已清理点赞数: 0';
+      counterDiv.textContent = 'Likes cleaned up: 0';
     }
   });
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save the action to Chrome storage
     chrome.storage.local.set({ lastAction: timestamp }, function() {
-      resultDiv.textContent = `操作执行时间: ${timestamp}`;
+      resultDiv.textContent = `Operation time: ${timestamp}`;
     });
 
     // Get the current active tab
@@ -58,6 +58,7 @@ function clickButtons() {
     
     // Find and click the like button within the current note
     $(currentNote).find('.like-lottie').click();
+    $($(currentNote).find('.like-lottie')).removeClass('like-lottie');
     
     // Increment index for next note
     idx += 1;
@@ -69,13 +70,13 @@ function clickButtons() {
         // Update the counter display
         const counterDiv = document.getElementById('counter');
         if (counterDiv) {
-          counterDiv.textContent = `已清理点赞数: ${currentCount}`;
+          counterDiv.textContent = `Likes cleaned up: ${currentCount}`;
         }
       });
     });
     
     // Schedule next click with random delay between 1-2 seconds
-    setTimeout(run, 1000 + parseInt(Math.random() * 1000));
+    setTimeout(run, 100 + parseInt(Math.random() * 100));
   }
   
   // Start the clicking process
